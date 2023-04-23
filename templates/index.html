@@ -1,14 +1,20 @@
-<!doctype html>
-<html>
-  <head>
-    <title>URL Shortener & IP Logger</title>
-  </head>
-  <body>
-    <h1>URL Shortener & IP Logger</h1>
-    <form action="/" method="post">
-      <label for="long_url">Long URL:</label>
-      <input type="text" name="long_url" required>
-      <button type="submit">Shorten</button>
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>URL Shortener and IP Logger</h1>
+    <form action="{{ url_for('add_link') }}" method="post">
+        <input type="text" name="url" placeholder="Enter your URL" required>
+        <input type="submit" value="Shorten">
     </form>
-  </body>
-</html>
+    <table>
+        <tbody>
+            {% for short_url in short_urls %}
+                <tr>
+                    <td>{{ short_url.original }}</td>
+                    <td><a href="{{ url_for('redirect_url', short_url=short_url.short) }}" target="_blank">{{ request.url_root }}{{ short_url.short }}</a></td>
+                    <td><a href="{{ url_for('view_ips', short_url=short_url.short) }}">View IPs</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
