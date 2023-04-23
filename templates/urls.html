@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <h1>Shortened URLs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Original URL</th>
+                <th>Short URL</th>
+                <th>Clicks</th>
+                <th>IP Addresses</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for link in links %}
+                <tr>
+                    <td><a href="{{ link.original }}" target="_blank">{{ link.original }}</a></td>
+                    <td><a href="{{ url_for('redirect_url', short_url=link.short, _external=True) }}" target="_blank">{{ url_for('redirect_url', short_url=link.short, _external=True) }}</a></td>
+                    <td>{{ link.clicks }}</td>
+                    <td><a href="{{ url_for('view_ips', short_url=link.short) }}">View IPs</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
