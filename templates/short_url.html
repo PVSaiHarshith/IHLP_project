@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% extends 'layout.html' %}
+    {% block content %}
+<style>
+  
+  .shorturl {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        padding: 40px;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, .5);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+        border-radius: 10px;
+        color: azure;
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Short URL</title>
 </head>
+
 <body>
-    <h1>Your short URL:</h1>
-    <p>
-        <a href="{{ url_for('redirect_url', short_url=short_url) }}">{{ request.url_root }}{{ short_url }}</a>
-    </p>
-    <p>
-        <a href="{{ url_for('index') }}">Create another short URL</a>
-    </p>
-    <p>
-        <a href="{{ url_for('view_ips', short_url=short_url) }}">View IP addresses</a>
-    </p>
+        <div class="shorturl">
+            <h1>Your short URL:</h1>
+            <p>
+                <a href="{{ url_for('redirect_url', short_url=short_url) }}">{{ request.url_root }}{{ short_url }}</a>
+            </p>
+            <p>
+                <a href="{{ url_for('index') }}">Create another short URL</a>
+            </p>
+            <p>
+                <a href="{{ url_for('view_ips', short_url=short_url) }}">View IP addresses</a>
+            </p>
+        </div>
 </body>
+{% endblock %}
 </html>

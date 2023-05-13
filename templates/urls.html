@@ -2,9 +2,18 @@
 
 {% block content %}
     <style>
+        h1 {
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            color:  #ebedee;
+            background-color: black;
+            border-radius: 15px 50px 30px ;
+            text-align: center;
+
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            font-family:Arial, Helvetica, sans-serif;
         }
         table, th, td {
             border: 1px solid black;
@@ -14,10 +23,13 @@
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            
+            background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
+
         }
     </style>
-    <h1>Shortened URLs</h1>
+    <div class="box">
+    <h1>Shortened URL's</h1>
     <table>
         <thead>
             <tr>
@@ -38,4 +50,5 @@
             {% endfor %}
         </tbody>
     </table>
+    </div>
 {% endblock %}

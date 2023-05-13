@@ -8,8 +8,11 @@
             display: flex;
             justify-content: space-around;
             padding: 1rem;
-            background-color: #f2f2f2;
+            background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
             margin-bottom: 2rem;
+            border-radius: 25px;
+            transition: width 2s, height 2s, transform 2s;
+            font-weight: 700;
         }
 
         a {
@@ -19,10 +22,26 @@
 
         a:hover {
             text-decoration: underline;
+            color: #f6f6f6;
+            padding: 1%;
+            width: 300px;
+            background-color: black;
+            border-radius: 10px;
+            transition: width 2s, height 2s, transform 2s;
+            transition-delay: 1s;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+
+                }
+
+        .page {
+           height: max-content;
+           background: radial-gradient(circle at 10% 20%, rgba(216, 241, 230, 0.46) 0.1%, rgba(233, 226, 226, 0.28) 90.1%);
         }
     </style>
 </head>
-<body>
+<body class="page">
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('urls') }}">Shortened URLs</a>
